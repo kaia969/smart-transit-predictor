@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛡️ Smart Transit Predictor — Northeast India
 
 > **AI-Powered Road Safety Prediction System for Northeast India**
@@ -341,3 +342,7 @@ Built with ❤️ for the people of Northeast India.
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
+=======
+# Smart_Transit_Predictor
+it helps to check road safety
+>>>>>>> cfaf0cd2f678e6deeeda50890d41c35d56227ca2
