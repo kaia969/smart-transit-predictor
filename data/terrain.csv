@@ -1,0 +1,55 @@
+route_id,from_city,to_city,segment_index,segment_from,segment_to,segment_from_lat,segment_from_lng,segment_to_lat,segment_to_lng,average_slope,max_elevation,road_type,historical_blockages_per_year,segment_length_km
+aizawl-silchar,Aizawl,Silchar,0,Aizawl,Vairengte,23.7271,92.7176,24.2637,92.7915,32,1132,1,12,65
+aizawl-silchar,Aizawl,Silchar,1,Vairengte,Lailapur,24.2637,92.7915,24.6120,92.7547,28,800,1,8,55
+aizawl-silchar,Aizawl,Silchar,2,Lailapur,Silchar,24.6120,92.7547,24.8333,92.7789,18,350,0,3,60
+aizawl-guwahati,Aizawl,Guwahati,0,Aizawl,Silchar,23.7271,92.7176,24.8333,92.7789,30,1132,1,10,180
+aizawl-guwahati,Aizawl,Guwahati,1,Silchar,Haflong,24.8333,92.7789,25.1656,93.0170,35,680,1,15,80
+aizawl-guwahati,Aizawl,Guwahati,2,Haflong,Lumding,25.1656,93.0170,25.7500,93.1667,22,450,1,7,60
+aizawl-guwahati,Aizawl,Guwahati,3,Lumding,Guwahati,25.7500,93.1667,26.1445,91.7362,10,60,0,2,160
+imphal-guwahati,Imphal,Guwahati,0,Imphal,Kohima,24.8170,93.9368,25.6751,94.1086,38,1500,1,18,140
+imphal-guwahati,Imphal,Guwahati,1,Kohima,Dimapur,25.6751,94.1086,25.9065,93.7272,25,1261,1,10,70
+imphal-guwahati,Imphal,Guwahati,2,Dimapur,Guwahati,25.9065,93.7272,26.1445,91.7362,8,60,0,2,240
+shillong-guwahati,Shillong,Guwahati,0,Shillong,Nongpoh,25.5788,91.8933,25.9167,91.8833,22,1496,0,5,50
+shillong-guwahati,Shillong,Guwahati,1,Nongpoh,Guwahati,25.9167,91.8833,26.1445,91.7362,15,600,0,2,50
+agartala-silchar,Agartala,Silchar,0,Agartala,Karimganj,23.8315,91.2868,24.8649,92.3560,12,300,0,6,80
+agartala-silchar,Agartala,Silchar,1,Karimganj,Badarpur,24.8649,92.3560,24.8686,92.5967,8,200,0,9,50
+agartala-silchar,Agartala,Silchar,2,Badarpur,Silchar,24.8686,92.5967,24.8333,92.7789,10,350,0,4,40
+imphal-silchar,Imphal,Silchar,0,Imphal,Bishnupur,24.8170,93.9368,24.6281,93.7650,25,900,1,14,30
+imphal-silchar,Imphal,Silchar,1,Bishnupur,Churachandpur,24.6281,93.7650,24.3333,93.6833,35,1200,1,16,50
+imphal-silchar,Imphal,Silchar,2,Churachandpur,Silchar,24.3333,93.6833,24.8333,92.7789,30,350,1,8,120
+dimapur-kohima,Dimapur,Kohima,0,Dimapur,Chumukedima,25.9065,93.7272,25.8500,93.7500,15,400,0,4,20
+dimapur-kohima,Dimapur,Kohima,1,Chumukedima,Zubza,25.8500,93.7500,25.7200,94.0000,35,1100,1,12,30
+dimapur-kohima,Dimapur,Kohima,2,Zubza,Kohima,25.7200,94.0000,25.6751,94.1086,30,1444,1,9,24
+kohima-imphal,Kohima,Imphal,0,Kohima,Mao,25.6751,94.1086,25.3500,94.1000,33,1500,1,15,50
+kohima-imphal,Kohima,Imphal,1,Mao,Senapati,25.3500,94.1000,25.0700,94.0200,28,1200,1,11,40
+kohima-imphal,Kohima,Imphal,2,Senapati,Imphal,25.0700,94.0200,24.8170,93.9368,20,786,1,6,45
+guwahati-tezpur,Guwahati,Tezpur,0,Guwahati,Nagaon,26.1445,91.7362,26.3500,92.6840,5,65,0,3,120
+guwahati-tezpur,Guwahati,Tezpur,1,Nagaon,Tezpur,26.3500,92.6840,26.6338,92.8006,6,55,0,4,60
+guwahati-jorhat,Guwahati,Jorhat,0,Guwahati,Nagaon,26.1445,91.7362,26.3500,92.6840,5,65,0,3,120
+guwahati-jorhat,Guwahati,Jorhat,1,Nagaon,Bokakhat,26.3500,92.6840,26.6200,93.6000,4,70,0,5,110
+guwahati-jorhat,Guwahati,Jorhat,2,Bokakhat,Jorhat,26.6200,93.6000,26.7509,94.2037,5,116,0,4,80
+jorhat-dibrugarh,Jorhat,Dibrugarh,0,Jorhat,Sibsagar,26.7509,94.2037,26.9840,94.6380,4,95,0,3,60
+jorhat-dibrugarh,Jorhat,Dibrugarh,1,Sibsagar,Dibrugarh,26.9840,94.6380,27.4728,94.9120,5,108,0,4,70
+tezpur-itanagar,Tezpur,Itanagar,0,Tezpur,Bhalukpong,26.6338,92.8006,27.0167,92.6500,18,200,0,6,60
+tezpur-itanagar,Tezpur,Itanagar,1,Bhalukpong,Bomdila,27.0167,92.6500,27.2645,92.4214,40,2400,1,20,100
+tezpur-itanagar,Tezpur,Itanagar,2,Bomdila,Itanagar,27.2645,92.4214,27.0844,93.6053,30,1800,1,14,120
+dibrugarh-itanagar,Dibrugarh,Itanagar,0,Dibrugarh,North Lakhimpur,27.4728,94.9120,27.2353,94.1047,6,100,0,5,110
+dibrugarh-itanagar,Dibrugarh,Itanagar,1,North Lakhimpur,Ziro,27.2353,94.1047,27.5883,93.8311,35,1780,1,16,120
+dibrugarh-itanagar,Dibrugarh,Itanagar,2,Ziro,Daporijo,27.5883,93.8311,27.9833,93.8833,32,1600,1,18,130
+dibrugarh-itanagar,Dibrugarh,Itanagar,3,Daporijo,Itanagar,27.9833,93.8833,27.0844,93.6053,28,1200,1,12,120
+guwahati-gangtok,Guwahati,Gangtok,0,Guwahati,Cooch Behar,26.1445,91.7362,26.3252,89.4482,4,50,0,3,200
+guwahati-gangtok,Guwahati,Gangtok,1,Cooch Behar,Siliguri,26.3252,89.4482,26.7271,88.3953,5,130,0,2,140
+guwahati-gangtok,Guwahati,Gangtok,2,Siliguri,Rangpo,26.7271,88.3953,27.1753,88.5333,28,800,1,10,100
+guwahati-gangtok,Guwahati,Gangtok,3,Rangpo,Gangtok,27.1753,88.5333,27.3389,88.6065,35,1650,1,14,120
+silchar-shillong,Silchar,Shillong,0,Silchar,Haflong,24.8333,92.7789,25.1656,93.0170,28,680,1,12,80
+silchar-shillong,Silchar,Shillong,1,Haflong,Jowai,25.1656,93.0170,25.4520,92.2030,25,1380,1,10,130
+silchar-shillong,Silchar,Shillong,2,Jowai,Shillong,25.4520,92.2030,25.5788,91.8933,20,1496,0,6,120
+agartala-guwahati,Agartala,Guwahati,0,Agartala,Karimganj,23.8315,91.2868,24.8649,92.3560,12,300,0,6,130
+agartala-guwahati,Agartala,Guwahati,1,Karimganj,Silchar,24.8649,92.3560,24.8333,92.7789,8,200,0,7,90
+agartala-guwahati,Agartala,Guwahati,2,Silchar,Shillong,24.8333,92.7789,25.5788,91.8933,25,1496,1,11,270
+agartala-guwahati,Agartala,Guwahati,3,Shillong,Guwahati,25.5788,91.8933,26.1445,91.7362,18,1496,0,4,100
+jorhat-kohima,Jorhat,Kohima,0,Jorhat,Mariani,26.7509,94.2037,26.6600,94.3100,5,120,0,2,30
+jorhat-kohima,Jorhat,Kohima,1,Mariani,Wokha,26.6600,94.3100,26.1000,94.2700,30,1310,1,13,80
+jorhat-kohima,Jorhat,Kohima,2,Wokha,Kohima,26.1000,94.2700,25.6751,94.1086,28,1444,1,10,80
+dimapur-jorhat,Dimapur,Jorhat,0,Dimapur,Golaghat,25.9065,93.7272,26.5220,93.9600,10,100,0,4,80
+dimapur-jorhat,Dimapur,Jorhat,1,Golaghat,Jorhat,26.5220,93.9600,26.7509,94.2037,6,116,0,3,70

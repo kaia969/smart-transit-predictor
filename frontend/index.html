@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Road Safety Prediction for Northeast India. Check route risk levels, weather conditions, and segment-by-segment safety analysis.">
+    <meta name="keywords" content="road safety, Northeast India, transit predictor, route risk, weather, XGBoost">
+    <meta name="author" content="Smart Transit Predictor">
+    <meta name="theme-color" content="#0a0e1a">
+    <title>Smart Transit Predictor — Northeast India</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" aria-hidden="true"></div>
+
+    <!-- ════════════════════════ HEADER ════════════════════════ -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <div class="logo">
+                    <span class="logo-icon" aria-hidden="true">🛡️</span>
+                    <div class="logo-text">
+                        <h1 class="logo-title">Smart Transit Predictor</h1>
+                        <p class="logo-subtitle">AI-Powered Road Safety for Northeast India</p>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="live-badge" id="live-badge">
+                    <span class="live-dot"></span>
+                    <span class="live-text">LIVE</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ════════════════════════ MAIN CONTENT ════════════════════════ -->
+    <main class="main-content" id="main-content">
+        <!-- ──── Left Column: Form Panel ──── -->
+        <section class="form-panel" id="form-panel">
+            <div class="glass-card form-card">
+                <div class="form-header">
+                    <h2 class="section-title">
+                        <span class="section-icon" aria-hidden="true">📍</span>
+                        Plan Your Journey
+                    </h2>
+                    <p class="section-desc">Select your route and travel date to get AI-powered safety insights.</p>
+                </div>
+
+                <form class="route-form" id="route-form" onsubmit="return false;">
+                    <!-- FROM City -->
+                    <div class="form-group">
+                        <label class="form-label" for="from-city">From</label>
+                        <select class="form-select" id="from-city" name="from-city" required>
+                            <option value="">Select starting city</option>
+                        </select>
+                    </div>
+
+                    <!-- TO City -->
+                    <div class="form-group">
+                        <label class="form-label" for="to-city">Destination</label>
+                        <select class="form-select" id="to-city" name="to-city" required>
+                            <option value="">Select destination</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label class="form-label" for="travel-date">Travel Date</label>
+                        <input type="date" class="form-input" id="travel-date" name="travel-date" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="button" class="btn-primary" id="check-btn">
+                        <span class="btn-text">Check Route Safety</span>
+                        <span class="btn-loader hidden" id="btn-loader">
+                            <span class="spinner"></span>
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Route Info (hidden initially) -->
+                <div class="route-info glass-card hidden" id="route-info">
+                    <h3 class="route-info-title">
+                        <span aria-hidden="true">🛣️</span> Route Overview
+                    </h3>
+                    <div class="route-info-grid">
+                        <div class="route-stat">
+                            <span class="route-stat-icon" aria-hidden="true">📏</span>
+                            <div>
+                                <span class="route-stat-value" id="route-distance">—</span>
+                                <span class="route-stat-label">Distance</span>
+                            </div>
+                        </div>
+                        <div class="route-stat">
+                            <span class="route-stat-icon" aria-hidden="true">⏱️</span>
+                            <div>
+                                <span class="route-stat-value" id="route-time">—</span>
+                                <span class="route-stat-label">Est. Time</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="route-factors-section">
+                        <span class="route-factors-label">Known Risk Factors</span>
+                        <div class="route-factors" id="route-factors"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ──── Right Column: Map Panel ──── -->
+        <section class="map-panel" id="map-panel">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ════════════════════════ RESULTS SECTION ════════════════════════ -->
+    <section class="results-section hidden" id="results-section">
+        <div class="results-inner">
+            <!-- Risk Assessment Card -->
+            <div class="glass-card result-card risk-card" id="risk-card">
+                <h3 class="card-title">
+                    <span aria-hidden="true">🎯</span> Risk Assessment
+                </h3>
+                <div class="risk-gauge-wrapper">
+                    <div class="risk-gauge" id="risk-gauge">
+                        <div class="risk-gauge-inner">
+                            <span class="risk-icon" id="risk-icon">—</span>
+                            <span class="risk-label" id="risk-label">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="confidence-bar">
+                    <span class="confidence-label">Model Confidence</span>
+                    <span class="confidence-value" id="confidence">—</span>
+                </div>
+            </div>
+
+            <!-- Weather Summary Card -->
+            <div class="glass-card result-card weather-card" id="weather-card">
+                <h3 class="card-title">
+                    <span aria-hidden="true">🌦️</span> Weather Conditions
+                </h3>
+                <div class="weather-grid">
+                    <div class="weather-stat">
+                        <span class="weather-icon" aria-hidden="true">🌧️</span>
+                        <span class="weather-value" id="weather-rainfall">—</span>
+                        <span class="weather-label">Rainfall (24h)</span>
+                    </div>
+                    <div class="weather-stat">
+                        <span class="weather-icon" aria-hidden="true">🌡️</span>
+                        <span class="weather-value" id="weather-temperature">—</span>
+                        <span class="weather-label">Temperature</span>
+                    </div>
+                    <div class="weather-stat">
+                        <span class="weather-icon" aria-hidden="true">💨</span>
+                        <span class="weather-value" id="weather-wind">—</span>
+                        <span class="weather-label">Wind Speed</span>
+                    </div>
+                    <div class="weather-stat">
+                        <span class="weather-icon" aria-hidden="true">💧</span>
+                        <span class="weather-value" id="weather-humidity">—</span>
+                        <span class="weather-label">Humidity</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Reasons Card -->
+            <div class="glass-card result-card reasons-card" id="reasons-card">
+                <h3 class="card-title">
+                    <span aria-hidden="true">📋</span> Risk Factors
+                </h3>
+                <ul class="reasons-list" id="reasons-list"></ul>
+            </div>
+
+            <!-- Segment Breakdown Card -->
+            <div class="glass-card result-card segments-card" id="segments-card">
+                <h3 class="card-title">
+                    <span aria-hidden="true">🗺️</span> Segment Breakdown
+                </h3>
+                <div class="segments-list" id="segments-list"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════ FOOTER ════════════════════════ -->
+    <footer class="footer" id="footer">
+        <div class="footer-inner">
+            <p class="footer-text">Smart Transit Predictor © 2026 | Powered by XGBoost + Open-Meteo</p>
+        </div>
+    </footer>
+
+    <!-- App Script -->
+    <script src="/static/script.js"></script>
+</body>
+</html>
