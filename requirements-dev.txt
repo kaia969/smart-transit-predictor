@@ -1,0 +1,15 @@
+# ── Development / Training dependencies ──
+# Only needed if you want to RETRAIN the model or export a new ONNX file.
+# NOT needed to run the app on a fresh system.
+
+# Everything in runtime requirements
+-r requirements.txt
+
+# Training
+xgboost>=2.0.0
+scikit-learn>=1.4.0
+joblib>=1.3.0
+
+# ONNX export
+onnxmltools>=1.12.0
+skl2onnx>=1.16.0

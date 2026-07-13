@@ -1,8 +1,8 @@
-fastapi==0.115.0
-uvicorn[standard]==0.30.0
-xgboost==2.1.0
-scikit-learn==1.5.0
-pandas==2.2.0
-numpy==1.26.4
-httpx==0.27.0
-joblib==1.4.0
+# ── Runtime dependencies (required to RUN the app) ──
+# These are all you need on a fresh system. No XGBoost needed!
+fastapi>=0.100.0
+uvicorn[standard]>=0.25.0
+onnxruntime>=1.16.0
+pandas>=2.0.0
+numpy>=1.24.0
+httpx>=0.25.0
