@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 // API base URL (empty = same origin, change for remote backend)
-const API_BASE = '';
+const API_BASE = 'https://smart-transit-predictor.onrender.com';
 
 // Map instance & layers
 let map;
@@ -41,26 +41,26 @@ function initMap() {
 function addCityMarkers() {
     const defaultCities = [
         // Mizoram
-        { name: 'Aizawl',    lat: 23.7271, lng: 92.7176 },
+        { name: 'Aizawl', lat: 23.7271, lng: 92.7176 },
         // Assam
-        { name: 'Silchar',   lat: 24.8333, lng: 92.7789 },
-        { name: 'Guwahati',  lat: 26.1445, lng: 91.7362 },
-        { name: 'Tezpur',    lat: 26.6338, lng: 92.8006 },
-        { name: 'Jorhat',    lat: 26.7509, lng: 94.2037 },
+        { name: 'Silchar', lat: 24.8333, lng: 92.7789 },
+        { name: 'Guwahati', lat: 26.1445, lng: 91.7362 },
+        { name: 'Tezpur', lat: 26.6338, lng: 92.8006 },
+        { name: 'Jorhat', lat: 26.7509, lng: 94.2037 },
         { name: 'Dibrugarh', lat: 27.4728, lng: 94.9120 },
         // Manipur
-        { name: 'Imphal',    lat: 24.8170, lng: 93.9368 },
+        { name: 'Imphal', lat: 24.8170, lng: 93.9368 },
         // Meghalaya
-        { name: 'Shillong',  lat: 25.5788, lng: 91.8933 },
+        { name: 'Shillong', lat: 25.5788, lng: 91.8933 },
         // Nagaland
-        { name: 'Kohima',    lat: 25.6751, lng: 94.1086 },
-        { name: 'Dimapur',   lat: 25.9065, lng: 93.7272 },
+        { name: 'Kohima', lat: 25.6751, lng: 94.1086 },
+        { name: 'Dimapur', lat: 25.9065, lng: 93.7272 },
         // Tripura
-        { name: 'Agartala',  lat: 23.8315, lng: 91.2868 },
+        { name: 'Agartala', lat: 23.8315, lng: 91.2868 },
         // Arunachal Pradesh
-        { name: 'Itanagar',  lat: 27.0844, lng: 93.6053 },
+        { name: 'Itanagar', lat: 27.0844, lng: 93.6053 },
         // Sikkim
-        { name: 'Gangtok',   lat: 27.3389, lng: 88.6065 },
+        { name: 'Gangtok', lat: 27.3389, lng: 88.6065 },
     ];
 
     defaultCities.forEach(city => {
