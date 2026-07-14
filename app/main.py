@@ -1,6 +1,7 @@
 """Smart Transit Predictor — FastAPI Backend"""
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
@@ -15,6 +16,15 @@ app = FastAPI(
     title="Smart Transit Predictor",
     description="Road risk prediction for Northeast India",
     version="1.0.0"
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://smart-transit-predictor-gold.vercel.app",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Serve frontend static files
